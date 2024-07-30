@@ -27,7 +27,7 @@ public class TeamController {
     }
 
     @PostMapping
-    public List<Team> createTeam(@RequestBody List<Team> team){
-        return teamService.saveTeams(team);
+    public Team createTeam(@RequestBody Team team){
+        return teamService.saveTeam(team);
     }
 }
