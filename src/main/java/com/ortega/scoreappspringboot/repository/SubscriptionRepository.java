@@ -11,5 +11,6 @@ public interface SubscriptionRepository extends JpaRepository<Subscription, Stri
 
     List<Subscription> findByUserId(String userId);
     List<Subscription> findByTeamId(String userId);
+    boolean existsByUserIdAndTeamId(String userId, String teamId);
 
 }

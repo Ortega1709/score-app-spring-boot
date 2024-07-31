@@ -27,12 +27,10 @@ public class KafkaProducerConfig {
         return props;
     }
 
-    @Bean
     public ProducerFactory<String, String> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 
-    @Bean
     public KafkaTemplate<String, String> kafkaTemplate(
             ProducerFactory<String, String> producerFactory
     ) {

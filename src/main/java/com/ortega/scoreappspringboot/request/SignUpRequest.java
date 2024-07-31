@@ -5,9 +5,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SubscriptionRequest {
+public class SignUpRequest {
 
-    private String user;
-    private String team;
+    private String username;
+    private String email;
+    private String password;
 
 }

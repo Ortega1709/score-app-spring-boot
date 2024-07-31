@@ -21,7 +21,7 @@ public class SubscriptionController {
         return subscriptionService.getAllSubscriptions();
     }
 
-    @GetMapping("subscriptions/{id}")
+    @GetMapping("/subscriptions/{id}")
     public Subscription getSubscription(@PathVariable String id) {
         return subscriptionService.getSubscriptionById(id);
     }
@@ -36,7 +36,7 @@ public class SubscriptionController {
         return subscriptionService.subscribe(subscription.getUser(), subscription.getTeam());
     }
 
-    @DeleteMapping("subscriptions/{id}")
+    @DeleteMapping("/subscriptions/{id}")
     public void deleteSubscription(@PathVariable String id) {
         subscriptionService.deleteSubscription(id);
     }

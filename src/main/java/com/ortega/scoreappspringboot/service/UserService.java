@@ -22,8 +22,16 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public User saveUser(User user) {
-        return userRepository.save(user);
+    public User signUp(String username, String email, String password) {
+        if (!userRepository.existsByEmail(email.toLowerCase())) {
+            User user = new User();
+
+            user.setUsername(username);
+            user.setEmail(email);
+            user.setPassword(password);
+            return userRepository.save(user);
+        }
+        return null;
     }
 
     public void deleteUser(String id) {

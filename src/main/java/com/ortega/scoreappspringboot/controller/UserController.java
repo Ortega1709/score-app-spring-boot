@@ -2,6 +2,7 @@ package com.ortega.scoreappspringboot.controller;
 
 import com.ortega.scoreappspringboot.model.User;
 import com.ortega.scoreappspringboot.request.SignInRequest;
+import com.ortega.scoreappspringboot.request.SignUpRequest;
 import com.ortega.scoreappspringboot.service.UserService;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public User signup(@RequestBody User user) {
-        return userService.saveUser(user);
+    public User signup(@RequestBody SignUpRequest signUpRequest) {
+        return userService.signUp(signUpRequest.getUsername(), signUpRequest.getEmail(), signUpRequest.getPassword());
     }
 
     @PostMapping("/signin")

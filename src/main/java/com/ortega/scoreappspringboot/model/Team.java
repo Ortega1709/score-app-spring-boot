@@ -23,7 +23,4 @@ public class Team {
     private String country;
     private String flag;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Subscription> subscriptions = new HashSet<>();
-
 }

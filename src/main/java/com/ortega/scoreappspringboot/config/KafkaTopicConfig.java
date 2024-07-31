@@ -8,7 +8,6 @@ import org.springframework.kafka.config.TopicBuilder;
 @Configuration
 public class KafkaTopicConfig {
 
-    @Bean
     public NewTopic scoreTopic() {
         return TopicBuilder.name("score-app")
                 .build();

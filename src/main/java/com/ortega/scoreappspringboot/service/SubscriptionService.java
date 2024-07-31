@@ -9,6 +9,7 @@ import com.ortega.scoreappspringboot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,14 +28,19 @@ public class SubscriptionService {
     }
 
     public Subscription subscribe(String userId, String teamId) {
-        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-        Team team = teamRepository.findById(teamId).orElseThrow(() -> new RuntimeException("Team not found"));
+        if (!subscriptionRepository.existsByUserIdAndTeamId(userId, teamId)) {
+            Optional<User> userOptional = userRepository.findById(userId);
+            Optional<Team> teamOptional = teamRepository.findById(teamId);
 
-        Subscription subscription = new Subscription();
-        subscription.setUser(user);
-        subscription.setTeam(team);
+            if (userOptional.isPresent() && teamOptional.isPresent()) {
+                Subscription subscription = new Subscription();
+                subscription.setUser(userOptional.get());
+                subscription.setTeam(teamOptional.get());
 
-        return subscriptionRepository.save(subscription);
+                return subscriptionRepository.save(subscription);
+            }
+        }
+        return null;
     }
 
     public Subscription getSubscriptionById(String subscriptionId) {

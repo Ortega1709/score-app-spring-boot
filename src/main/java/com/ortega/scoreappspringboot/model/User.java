@@ -1,6 +1,7 @@
 package com.ortega.scoreappspringboot.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,9 +24,6 @@ public class User {
     private String username;
     private String email;
     private String password;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Subscription> subscriptions = new HashSet<>();
 
 }
 
