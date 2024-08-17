@@ -9,11 +9,11 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity(name = "teams")
 public class Team {
 
     @Id

@@ -6,23 +6,29 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "subscriptions")
-public class Subscription {
+@NoArgsConstructor
+@Entity(name = "matches")
+public class Match {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "team_a")
+    private Team teamA;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "team_id")
-    private Team team;
+    @JoinColumn(name = "team_b")
+    private Team teamB;
 
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Goal> goals;
+
+    private String status;
 }

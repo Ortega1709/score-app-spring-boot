@@ -12,14 +12,4 @@ public class ScoreAppSpringBootApplication {
     public static void main(String[] args) {
         SpringApplication.run(ScoreAppSpringBootApplication.class, args);
     }
-
-//    @Bean
-//    CommandLineRunner commandLineRunner(KafkaTemplate<String, String> kafkaTemplate) {
-//        return args -> {
-//          for (int i = 0; i < 10; i++) {
-//              kafkaTemplate.send("score-topic", "Barca: " + i + " - " + "Real: " + 0);
-//              Thread.sleep(1000);
-//          }
-//        };
-//    }
 }
